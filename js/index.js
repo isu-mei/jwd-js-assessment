@@ -109,7 +109,7 @@ const quizArray = [
         }
       }
     });
-    alert(score);
+    alert('This is your score: ' + score + '!');
   };
   
   // call the displayQuiz function
