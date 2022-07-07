@@ -27,6 +27,7 @@ window.addEventListener('DOMContentLoaded', () => {
   start.addEventListener('click', function (e) {
     document.querySelector('#quizBlock').style.display = 'block';
     start.style.display = 'none';
+    countDownTimer();
   });
 
   // Reload the page when the reset button is clicked
@@ -99,7 +100,7 @@ const quizArray = [
         
         if (quizItem.a == i) {
           //change background color of li element here
-          liElement.style.backgroundColor = "green";
+          liElement.style.backgroundColor = "lightgreen";
         }
         
         if (radioElement.checked && quizItem.a ==i) {
@@ -108,10 +109,12 @@ const quizArray = [
         }
       }
     });
+    alert(score);
   };
   
   // call the displayQuiz function
   displayQuiz();
+
   // submit button
   let submit = document.getElementById("btnSubmit");
   
@@ -121,30 +124,27 @@ const quizArray = [
   
   submit.addEventListener("click", submitButton);
   
+  
+  
+  // Add a countdown timer
+  var seconds = 1000 * 60; //1000 = 1 second in JS
+  var timer;
+  //When a key is pressed in the text area, update the timer using myFunction
+  
+  function countDownTimer() {
+    if(seconds == 60000)
+    timer = setInterval(countDownTimer, 1000)
+    seconds -= 1000;
+    document.getElementById("time").innerHTML = '0:' + seconds/1000;
+    if (seconds <= 0) {
+      clearInterval(timer);
+      calculateScore();
+    }
+  } 
+  
+  document.getElementById("time").innerHTML= "0:" + seconds/1000;
+  
 });
-
-
-// Add a countdown timer
-var seconds = 1000 * 60; //1000 = 1 second in JS
-var textarea = document.getElementById("textarea");
-var timer;
-textarea.addEventListener("keypress", myFunction)
-//When a key is pressed in the text area, update the timer using myFunction
-
-function myFunction() {
-   textarea.removeEventListener("keypress", myFunction);
-   if(seconds == 60000)
-     timer = setInterval(myFunction, 1000)
-   seconds -= 1000;
-   document.getElementById("time").innerHTML = '0:' + seconds/1000;
-   if (seconds <= 0) {
-       clearInterval(timer);
-       calculateScore();
-   }
-} 
-
-document.getElementById("time").innerHTML= "0:" + seconds/1000;
-
 
 
 
