@@ -124,12 +124,9 @@ const quizArray = [
   
   submit.addEventListener("click", submitButton);
   
-  
-  
   // Add a countdown timer
   var seconds = 1000 * 60; //1000 = 1 second in JS
   var timer;
-  //When a key is pressed in the text area, update the timer using myFunction
   
   function countDownTimer() {
     if(seconds == 60000)
